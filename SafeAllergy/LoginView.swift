@@ -21,33 +21,36 @@ struct LoginView: View {
     // Variável booleana para controlar a exibição de um alerta caso os campos estejam vazios.
 
     var body: some View {
-        // Corpo da view que contém todos os elementos da interface.
-        VStack {
-            // 'VStack' empilha as views verticalmente, criando um layout em coluna.
+        
+        NavigationView {
+            // Corpo da view que contém todos os elementos da interface.
+            VStack {
+                // 'VStack' empilha as views verticalmente, criando um layout em coluna.
 
-            TitleImage()
-            // Chamando uma subview que exibe o título e uma imagem.
-            
-            // Outro 'VStack' para empilhar os campos de login e senha de maneira centralizada.
-            VStack(alignment: .center) {
-                IdentifiqueseLoginSenha(userName: $userName, userPwd: $userPwd)
-                // Subview onde os campos de login e senha passam as variáveis de estado via binding.
-            }
-            .padding()
-            // Adicionando um espaçamento interno ao 'VStack' para que os campos não fiquem encostados nas bordas.
+                TitleImage()
+                // Chamando uma subview que exibe o título e uma imagem.
+                
+                // Outro 'VStack' para empilhar os campos de login e senha de maneira centralizada.
+                VStack(alignment: .center) {
+                    IdentifiqueseLoginSenha(userName: $userName, userPwd: $userPwd)
+                    // Subview onde os campos de login e senha passam as variáveis de estado via binding.
+                }
+                .padding()
+                // Adicionando um espaçamento interno ao 'VStack' para que os campos não fiquem encostados nas bordas.
 
-            ButtonEntrar(userName: $userName, userPwd: $userPwd)
-            // Subview que representa o botão "Entrar", com a lógica de validação dos campos de usuário e senha, passando as variáveis de estado para a subview.
+                ButtonEntrar(userName: $userName, userPwd: $userPwd)
+                // Subview que representa o botão "Entrar", com a lógica de validação dos campos de usuário e senha, passando as variáveis de estado para a subview.
 
-            // 'HStack' que coloca botões na horizontal. Neste caso, contém as opções de criar conta ou recuperar senha.
-            HStack {
+                // 'HStack' que coloca botões na horizontal. Neste caso, contém as opções de criar conta ou recuperar senha.
+        
                 SemContaEsqueci()
                 // Subview com opções para "Não tem uma conta?" e "Esqueci a senha", com seus próprios botões.
-            }
 
+            }
+            .background(Color.green.opacity(0.1))
+            // Define o fundo da tela com uma cor verde suave, com 10% de opacidade.
         }
-        .background(Color.green.opacity(0.1))
-        // Define o fundo da tela com uma cor verde suave, com 10% de opacidade.
+        
     }
 }
 
